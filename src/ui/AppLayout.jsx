@@ -17,5 +17,5 @@ export default function AppLayout() {
         </main>
         <CartOverview />
     </div>
-  )
+  );
 }
