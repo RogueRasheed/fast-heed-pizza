@@ -28,23 +28,23 @@ function Order() {
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
   return (
-    <div>
-      <div>
-        <h2>Status</h2>
+    <div className="px-4 py-6 space-y-8">
+      <div className="flex items-center justify-between flex-wrap">
+        <h2 className="text-xl font-semibold">Order # {id} status</h2>
 
-        <div>
-          {priority && <span>Priority</span>}
+        <div className="space-x-2">
+          {priority && <span className="bg-red-500 rounded-full py-1 px-3 font-semibold uppercase text-red-50 tracking-wide text-sm">Priority</span>}
           <span>{status} order</span>
         </div>
       </div>
 
-      <div>
-        <p>
+      <div className="flex flex-wrap items-center justify-between gap-2 bg-stone-200">
+        <p className="text-sm font-medium">
           {deliveryIn >= 0
             ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
             : "Order should have arrived"}
         </p>
-        <p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
+        <p className="text-sm font-medium">(Estimated delivery: {formatDate(estimatedDelivery)})</p>
       </div>
 
       <div>
