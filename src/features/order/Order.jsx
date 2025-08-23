@@ -8,6 +8,7 @@ import {
 } from "../../utils/helpers";
 import { getOrder } from "../../services/apiRestaurant";
 import { useLoaderData } from "react-router-dom";
+import OrderItem from "./OrderItem";
 
 
 function Order() {
@@ -44,10 +45,16 @@ function Order() {
             ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
             : "Order should have arrived"}
         </p>
-        <p className="text-sm font-medium">(Estimated delivery: {formatDate(estimatedDelivery)})</p>
+        <p className="text-xs text-stone-500">(Estimated delivery: {formatDate(estimatedDelivery)})</p>
       </div>
 
-      <div>
+            <ul className="divide-stone-200 divide-y border-t border-b">
+              {cart.map((item) => (
+                <OrderItem key={item.pizzaId} item={item} />
+              ))}
+            </ul>
+
+      <div className="space-y-2 bg-stone-100 p-3">
         <p>Price pizza: {formatCurrency(orderPrice)}</p>
         {priority && <p>Price priority: {formatCurrency(priorityPrice)}</p>}
         <p>To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
